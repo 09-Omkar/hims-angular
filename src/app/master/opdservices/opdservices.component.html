@@ -1,0 +1,97 @@
+
+<div class="app-page-title">
+  <div class="page-title-wrapper">
+      <div class="page-title-heading">
+          <div>OPD - Service</div>
+      </div>
+      <div class="page-title-actions">
+          <label class="text-danger">Count: {{ result.length }}</label>
+      </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+      <div class="card">
+          <div class="card-body">
+
+              <form [formGroup]="formdata" (ngSubmit)="submit(formdata.value)" class="">
+                  <div class="position-relative form-group">
+                    <div class="row">
+                      <div class="col-lg-2">
+                        <label>Sr.NO<span class="text-danger">*</span></label>
+                        <input placeholder="Enter sr.no" type="number"formControlName="srno"  class="form-control">
+                        <em class="error text-danger small" *ngIf="formdata.controls.srno.touched && formdata.controls.srno.invalid">Please enter sr.no</em>
+                      </div>
+
+                      <div class="col-lg-6">
+                        <label>Name<span class="text-danger">*</span></label>
+                        <input placeholder="Enter Name" type="text"formControlName="name"  class="form-control">
+                        <em class="error text-danger small" *ngIf="formdata.controls.name.touched && formdata.controls.name.invalid">Please enter name</em>
+
+                      </div>
+                      <div class="col-lg-2">
+                        <label>Defaultrate rate<span class="text-danger">*</span></label>
+                        <input placeholder="Defaultrate Rate" type="number"formControlName="defaultrate"  class="form-control">
+                        <em class="error text-danger small" *ngIf="formdata.controls.defaultrate.touched && formdata.controls.defaultrate.invalid">Please enter defaultrate</em>
+
+                      </div>
+                      <div class="col-lg-2">
+                        <label>Defaultfrate rate<span class="text-danger">*</span></label>
+                      <input placeholder="Defaultfrate Rate" type="number"formControlName="defaultfrate"  class="form-control">
+                      <em class="error text-danger small" *ngIf="formdata.controls.defaultfrate.touched && formdata.controls.defaultfrate.invalid">Please enter defaultfrate</em>
+
+
+                      </div>
+                    </div>
+
+
+
+
+                  </div>
+
+                  <input type="submit" [disabled]="formdata.invalid" value="Save" class="mt-1 btn btn-primary">
+                  <input type="button"  value="Cancel" (click)="cancel()" class="mt-1 mx-3 btn btn-danger">
+              </form>
+
+          </div>
+      </div>
+  </div>
+
+  <div class="col-lg-12 mt-2">
+      <div class="card">
+          <div class="card-body">
+              <table class="table table-hover table-striped table-bordered">
+                  <thead class="text-center">
+                      <tr>
+                          <th style="width: 150px;">Action</th>
+                          <th style="width: 80px;" class="text-right">Sr.No</th>
+                          <th class="text-left">Name</th>
+                          <th>Defaultrate Rate</th>
+                          <th>Defaultfrate Rate</th>
+
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let data of result; let i=index">
+                          <td class="text-center">
+
+                              <button (click)="edit(data.id)" class="mb-2 mr-2 btn-icon btn-icon-only btn-pill btn btn-primary"><i class="pe-7s-tools btn-icon-wrapper"> </i></button>
+                              <button (click)="delete(data.id)" class="mb-2 mr-2 btn-icon btn-icon-only btn-pill btn btn-danger"><i class="pe-7s-trash btn-icon-wrapper"> </i></button>
+
+                          </td>
+                          <td class="text-right">{{data.srno}}</td>
+                          <td class="text-left">{{data.name}}</td>
+                          <td class="text-center">{{data.defaultrate}}</td>
+                          <td class="text-center">{{data.defaultfrate}}</td>
+
+                      </tr>
+                  </tbody>
+
+              </table>
+
+
+          </div>
+      </div>
+  </div>
+</div>

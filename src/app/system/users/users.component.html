@@ -1,0 +1,124 @@
+<div class="app-page-title">
+  <div class="page-title-wrapper">
+    <div class="page-title-heading">
+      <div>Users</div>
+    </div>
+    <div class="page-title-actions">
+      <label *ngIf="result" class="text-danger">Count: {{ result.length }}</label>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-body">
+
+        <form [formGroup]="formdata" (ngSubmit)="submit(formdata.value)" class="">
+          <div class="position-relative form-group">
+            <div class="row">
+              <div class="col-md-4">
+                <label>Name<span class="text-danger">*</span></label>
+                <input placeholder="Name" type="text" formControlName="name" class="form-control">
+                <em class="error text-danger small"
+                  *ngIf="formdata.controls.name.touched && formdata.controls.name.invalid">Please Enter Name</em>
+              </div>
+              <div class="col-md-4">
+                <label>Username<span class="text-danger">*</span></label>
+                <input placeholder="Username" type="text" formControlName="username" class="form-control">
+                <em class="error text-danger small"
+                  *ngIf="formdata.controls.username.touched && formdata.controls.username.invalid">Please Enter Username</em>
+              </div>
+              <div class="col-md-4">
+                <label>Password<span class="text-danger">*</span></label>
+                <input placeholder="Password" type="text" formControlName="password" class="form-control">
+                <em class="error text-danger small"
+                  *ngIf="formdata.controls.password.touched && formdata.controls.password.invalid">Please Enter Password</em>
+              </div>
+              <div class="col-md-4">
+                <label>Mobile No</label>
+                <input placeholder="Mobile No" type="text" formControlName="mobileno" class="form-control">
+              </div>
+              <div class="col-md-4">
+                <label>Email</label>
+                <input placeholder="Email" type="text" formControlName="email" class="form-control">
+              </div>
+              <div class="col-md-4">
+                <label>User Type<span class="text-danger">*</span></label>
+                <select formControlName="usertypeid" class="form-control">
+                  <option value="0">User Type</option>
+                  <option *ngFor="let usertype of usertypes;" value="{{ usertype.id }}">{{ usertype.name }}</option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <label>Doctor</label>
+                <select formControlName="doctorid" class="form-control">
+                  <option value="0">Doctor</option>
+                  <option *ngFor="let doctor of doctors;" value="{{ doctor.id }}">{{ doctor.name }}</option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <label>Lab</label>
+                <select formControlName="labid" class="form-control">
+                  <option value="0">Lab</option>
+                  <option *ngFor="let lab of labs;" value="{{ lab.id }}">{{ lab.name }}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <input type="submit" [disabled]="formdata.invalid" value="Save" class="mt-1 btn btn-primary">
+                    <input type="reset" [disabled]="formdata.invalid" value="Cancel" class="mt-1 ml-2 btn btn-danger">
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-12 mt-2">
+    <div class="card">
+      <div class="card-body">
+        <table class="table table-hover table-striped table-bordered">
+          <thead class="text-center">
+            <tr>
+              <th style="width: 150px;">Action</th>
+              <th style="width: 80px;">No</th>
+              <th>Name</th>
+              <th>Username</th>
+              <th>Password</th>
+              <th>Mobile No</th>
+              <th>Email</th>
+              <th>User Type</th>
+              <th>Doctor</th>
+              <th>Lab</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of result; let i=index" class="text-center">
+              <td class="text-center">
+
+                <button (click)="edit(data.id)" class="mb-2 mr-2 btn-icon btn-icon-only btn-pill btn btn-primary"><i
+                    class="pe-7s-tools btn-icon-wrapper"> </i></button>
+                <button (click)="delete(data.id)" class="mb-2 mr-2 btn-icon btn-icon-only btn-pill btn btn-danger"><i
+                    class="pe-7s-trash btn-icon-wrapper"> </i></button>
+
+              </td>
+              <td>{{i+1}}</td>
+              <td>{{data.name}}</td>
+              <td>{{data.username}}</td>
+              <td>{{data.password}}</td>
+              <td>{{data.mobileno}}</td>
+              <td>{{data.email}}</td>
+              <td>{{data.usertypename}}</td>
+              <td>{{data.doctorname}}</td>
+              <td>{{data.labname}}</td>
+
+            </tr>
+          </tbody>
+
+        </table>
+
+
+      </div>
+    </div>
+  </div>
+</div>

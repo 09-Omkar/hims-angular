@@ -1,0 +1,37 @@
+<div class="app-page-title">
+    <div class="page-title-wrapper">
+        <div class="page-title-heading">
+            <div>MODULES</div>
+        </div>
+        <div class="page-title-actions">
+
+        </div>
+    </div>
+</div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row col-lg-12">
+                        <div style="cursor:pointer;" *ngFor="let module of modules;" class="col-lg-3 text-center"
+                            (click)="moduleClicked(module)">
+                            <div class="dropdown-menu-header-inner bg-primary p-3 rounded">
+                                <div class="menu-header-image"
+                                    style="background-image: url('assets/images/dropdown-header/city2.jpg');"></div>
+                                <div class="menu-header-content">
+                                    <div class="avatar-icon-wrapper avatar-icon-lg">
+                                        <div class="avatar-icon rounded btn-hover-shine">
+                                            <img src="{{ api.baseurl + module.picpath }}" alt="{{ module.name }}">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h5 class="menu-header-title text-white">{{ module.name }}</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

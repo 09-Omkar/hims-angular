@@ -1,0 +1,68 @@
+<div class="app-page-title">
+    <div class="page-title-wrapper">
+        <div class="page-title-heading">
+            <div>Villages</div>
+        </div>
+       
+        <div class="page-title-actions">
+            
+            <label  *ngIf="result" class="text-danger mx-5">Count: {{result.length}} </label>
+            <button class="  btn btn-shadow btn-info" routerLink="/talukas/{{talukaid}}">Back </button>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+
+                <form [formGroup]="formdata" (ngSubmit)="submit(formdata.value)" class="">
+
+                    <div class="position-relative form-group">
+                        <input  type="hidden" formControlName="talukaid"  class="form-control">
+                        <label>Village<span class="text-danger">*</span></label>
+                        <input placeholder="Village" type="text" formControlName="name"  class="form-control">
+                        <em class="error text-danger small" *ngIf="formdata.controls.name.touched && formdata.controls.name.invalid">Please enter Talukas</em>
+                    </div>
+
+                    <input type="submit" [disabled]="formdata.invalid" value="Save" class="mt-1 btn btn-primary">
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-12 mt-2">
+        <div class="card">
+            <div class="card-body">
+                <table class="table table-hover table-striped table-bordered">
+                    <thead class="text-center">
+                        <tr>
+                            <th style="width: 150px;">Action</th>
+                            <th style="width: 80px;">No</th>                 
+                            <th>Village</th>
+                         
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let data of result; let i=index">
+                            <td class="text-center">
+                                
+                                <button (click)="edit(data.id)" class="mb-2 mr-2 btn-icon btn-icon-only btn-pill btn btn-primary"><i class="pe-7s-tools btn-icon-wrapper"> </i></button>
+                                <button (click)="delete(data.id)" class="mb-2 mr-2 btn-icon btn-icon-only btn-pill btn btn-danger"><i class="pe-7s-trash btn-icon-wrapper"> </i></button>
+
+                            </td>
+                            <td class="text-right">{{i+1}}</td>
+                            <td class="text-center">{{data.name}}</td>
+                          
+                        </tr>
+                    </tbody>
+
+                </table>
+
+
+            </div>
+        </div>
+    </div>
+</div>

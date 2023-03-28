@@ -1,0 +1,90 @@
+<div class="app-page-title">
+    <div class="page-title-wrapper">
+        <div class="page-title-heading">
+            <div>MODULES</div>
+        </div>
+        <div class="page-title-actions">
+            <label class="text-danger" *ngIf="results">Count: {{ results.length }}</label>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <form [formGroup]="formdata" (ngSubmit)="submit(formdata.value)" class="">
+                    <input type="hidden" formControlName="image" />
+                    <div class="position-relative form-group">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>Sr.No<span class="text-danger">*</span></label>
+                            <input placeholder="Sr.no" type="number" formControlName="srno"  class="form-control">
+                            <em class="error text-danger small" *ngIf="formdata.controls.srno.touched && formdata.controls.srno.invalid">Please enter sr.no</em>
+                            </div>
+                        <div class="col-md-4">
+                            <label>Name<span class="text-danger">*</span></label>
+                        <input placeholder="Name" type="text" formControlName="name"  class="form-control">
+                        <em class="error text-danger small" *ngIf="formdata.controls.name.touched && formdata.controls.name.invalid">Please enter Name</em>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Image<span *ngIf="id == 0" class="text-danger">*</span></label>
+                        <input placeholder="Picpath" id="image" type="file" (change)="imageChanged($event)" accept="image/*" class="form-control">
+                        <!-- <em class="error text-danger small" *ngIf="formdata.controls.picpath.touched && formdata.controls.picpath.invalid">Please enter picpath</em> -->
+                        </div>
+                        <div class="col-md-4 mt-2">
+                            <label>Link<span class="text-danger">*</span></label>
+                        <input placeholder="Link" type="text"formControlName="link"  class="form-control">
+                        <em class="error text-danger small" *ngIf="formdata.controls.link.touched && formdata.controls.link.invalid">Please enter link</em>
+                        </div>
+                    </div>
+                    </div>
+
+                    <input type="submit" [disabled]="formdata.invalid" value="Save" class="mt-1 btn btn-primary">
+                    <input type="reset" [disabled]="formdata.invalid" value="Cancel" class="mt-1 ml-2 btn btn-danger">
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-12 mt-2">
+        <div class="card">
+            <div class="card-body">
+                <table class="table table-hover table-striped table-bordered">
+                    <thead class="text-left">
+                        <tr>
+                            <th style="width: 150px;">Action</th>
+                            <th style="width: 80px;">No</th>
+                            <th>Name</th>
+                            <th>SrNo</th>
+                            <th>Picpath</th>
+                            <th>Link</th>
+                         
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let data of results; let i=index" class="text-center">
+                            <td class="text-left">
+                                
+                                <button (click)="edit(data.id)" class="mb-2 mr-2 btn-icon btn-icon-only btn-pill btn btn-primary" data-bs-toggle="tooltip" title="Edit"><i class="pe-7s-tools btn-icon-wrapper"> </i></button>
+                                <button (click)="delete(data.id)" class="mb-2 mr-2 btn-icon btn-icon-only btn-pill btn btn-danger" data-bs-toggle="tooltip" title="Delete"><i class="pe-7s-trash btn-icon-wrapper"> </i></button>
+
+                            </td>
+                            <td>{{i+1}}</td>
+                            <td>{{data.name}}</td>
+                            <td>{{data.srno}}</td>                         
+                            <td><img src="{{ api.baseurl +  data.picpath}}" style="height:80px;" /></td>
+                            <td>{{data.link}}</td>
+                          
+                        </tr>
+                    </tbody>
+
+                </table>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+

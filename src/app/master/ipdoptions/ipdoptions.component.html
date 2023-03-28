@@ -1,0 +1,110 @@
+<div class="app-page-title">
+    <div class="page-title-wrapper">
+        <div class="page-title-heading">
+            <div>IPD-Opations</div>
+        </div>
+        <div class="page-title-actions">
+            <label class="text-danger" *ngIf="result">Count: {{ result.length }}</label>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+
+                <form [formGroup]="formdata" (ngSubmit)="submit(formdata.value)" class="">
+                    <div class="position-relative form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label>Sr-no<span class="text-danger">*</span></label>
+                                <input placeholder="Sr-no" type="number" formControlName="srno" class="form-control">
+                                <em class="error text-danger small"
+                                    *ngIf="formdata.controls.srno.touched && formdata.controls.srno.invalid">Please
+                                    enter sr-no</em>
+                            </div>
+                            <div class="col-md-2">
+                                <label>Title<span class="text-danger">*</span></label>
+                                <input placeholder="Title" type="text" formControlName="title" class="form-control">
+                                <em class="error text-danger small"
+                                    *ngIf="formdata.controls.title.touched && formdata.controls.title.invalid">Please
+                                    enter title</em>
+                            </div>
+                            <div class="col-md-4">
+                                <label>Link<span class="text-danger">*</span></label>
+                                <input placeholder="Links" type="text" formControlName="link" class="form-control">
+                                <em class="error text-danger small"
+                                    *ngIf="formdata.controls.link.touched && formdata.controls.link.invalid">Please
+                                    enter Link</em>
+                            </div>
+                            <div class="col-md-4">
+                                <label>Option-For<span class="text-danger">*</span></label>
+                                <input placeholder="Option-For" type="text" formControlName="optionfor"
+                                    class="form-control">
+                                <em class="error text-danger small"
+                                    *ngIf="formdata.controls.optionfor.touched && formdata.controls.optionfor.invalid">Please
+                                    enter option-for</em>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <input type="submit" [disabled]="formdata.invalid" value="Save" class="mt-1 btn btn-primary">
+                    <input type="reset" [disabled]="formdata.invalid" value="Cancel" class="mt-1 ml-2 btn btn-danger">
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-12 mt-2">
+        <div class="card">
+            <div class="card-body">
+                <table class="table table-hover table-striped table-bordered">
+                    <thead class="text-left">
+                        <tr>
+                            <th style="width: 150px;">Action</th>
+                            <th style="width: 80px;">No</th>
+                            <th style="width: 80px;">Sr-No</th>
+                            <th>Title</th>
+                            <th>Link</th>
+                            <th>Option-For</th>
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let data of result | paginate: { itemsPerPage: itemsPerPage, currentPage: p }; let i=index" class="text-left">
+                            <td class="text-center">
+
+                                <button (click)="edit(data.id)"
+                                    class="mb-2 mr-2 btn-icon btn-icon-only btn-pill btn btn-primary"><i
+                                        class="pe-7s-tools btn-icon-wrapper"> </i></button>
+                                <button (click)="delete(data.id)"
+                                    class="mb-2 mr-2 btn-icon btn-icon-only btn-pill btn btn-danger"><i
+                                        class="pe-7s-trash btn-icon-wrapper"> </i></button>
+
+                            </td>
+                            <td>{{i+1}}</td>
+                            <td>{{data.srno}}</td>
+                            <td>{{data.title}}</td>
+                            <td>{{data.link}}</td>
+                            <td>{{data.optionfor}}</td>
+                        </tr>
+
+
+                    </tbody>
+
+                </table>
+                <div class="mt-3 d-flex justify-content-center">
+                    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                </div>
+            
+
+
+
+            </div>
+        </div>
+    </div>
+</div>

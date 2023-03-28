@@ -1,0 +1,87 @@
+<div class="app-page-title">
+  <div class="page-title-wrapper">
+      <div class="page-title-heading">
+          <div>Configurations</div>
+      </div>
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+      <div class="card">
+          <div class="card-body">
+
+              <form [formGroup]="formdata" (ngSubmit)="submit(formdata.value)" class="">
+                  <div class="position-relative form-group">
+                     <div class="row">
+                      <div class="col-md-6">
+                        <label>Configurations name<span class="text-danger">*</span></label>
+                        <input placeholder="configurations name" type="text" formControlName="cname"  class="form-control">
+                        <em class="error text-danger small" *ngIf="formdata.controls.cname.touched && formdata.controls.cname.invalid">Please enter configurations name</em>
+                     </div>
+
+                     <div class="col-md-6">
+                        <label>Configurations value<span class="text-danger">*</span></label>
+                        <input placeholder="configurations value" type="text" formControlName="cvalue"  class="form-control">
+                        <em class="error text-danger small" *ngIf="formdata.controls.cvalue.touched && formdata.controls.cvalue.invalid">Please enter configurations value</em>
+                     </div>
+                     </div>
+
+                  </div>
+
+                  <input type="submit" [disabled]="formdata.invalid" value="Save" class="mt-1 btn btn-primary">
+                  <button (click)="cancel()" [disabled]="formdata.invalid"  class="btn btn-danger mt-1" style="margin-left: 10px;">Cancel</button>
+
+              </form>
+
+          </div>
+      </div>
+  </div>
+
+  <div class="col-lg-12 mt-2">
+      <div class="card">
+          <div class="card-body">
+              <table class="table table-hover table-striped table-bordered">
+                  <thead class="text-center">
+                      <tr>
+                          <th style="width: 150px;">Action</th>
+                          <th style="width: 80px;">No</th>
+                          <th>Name</th>
+                          <th>Value</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let data of result; let i=index">
+                          <td class="text-center">
+
+                              <button (click)="edit(data.id)" class="mb-2 mr-2 btn-icon btn-icon-only btn-pill btn btn-primary"><i class="pe-7s-tools btn-icon-wrapper"> </i></button>
+                              <button (click)="delete(data.id)" class="mb-2 mr-2 btn-icon btn-icon-only btn-pill btn btn-danger"><i class="pe-7s-trash btn-icon-wrapper"> </i></button>
+
+                          </td>
+                          <td class="text-right">{{i+1}}</td>
+                          <td>{{data.cname}}</td>
+                          <td>{{data.cvalue}}</td>
+
+                      </tr>
+                  </tbody>
+              </table>
+
+             <div>
+                <ul class="pagination text-end">
+                  <li class="active"><a> < </a></li>
+                  <li><a>1</a></li>
+                  <li><a>2</a></li>
+                  <li><a>3</a></li>
+                  <li><a>4</a></li>
+                  <li><a>5</a></li>
+                  <li class="active"><a> > </a></li>
+                </ul>
+             </div>
+
+          </div>
+      </div>
+  </div>
+
+
+</div>

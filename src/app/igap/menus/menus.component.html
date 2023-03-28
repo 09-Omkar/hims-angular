@@ -1,0 +1,130 @@
+<div class="app-page-title">
+    <div class="page-title-wrapper">
+        <div class="page-title-heading">
+            <div>Menus</div>
+        </div>
+        <div class="page-title-actions">
+            <label class="text-danger" *ngIf="result">Count: {{ result.length }}</label>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+
+                <form [formGroup]="formdata" (ngSubmit)="submit(formdata.value)" class="">
+                    <div class="position-relative form-group">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>Title<span class="text-danger">*</span></label>
+                            <input placeholder="Title" type="text"formControlName="title"  class="form-control">
+                            <em class="error text-danger small" *ngIf="formdata.controls.title.touched && formdata.controls.title.invalid">Please enter title</em>
+                            </div>
+                        <div class="col-md-4">
+                            <label>Can have childs?<span class="text-danger">*</span></label><br>
+                            <label class="switch">
+                                <input formControlName="canhavechilds" type="checkbox">
+                                <span class="slider round"></span>
+                              </label>
+                        
+                        </div>
+                        <div class="col-md-4">
+                            <label>Parent Menu<span class="text-danger">*</span></label>
+                            <select class="form-control" formControlName="menuid">
+                                <option value="0">Menu</option>
+                                <option *ngFor="let menu of parentMenus | paginate: { itemsPerPage:itemsPerPage , currentPage: p };" value="{{ menu.id }}">{{ menu.title }}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4 mt-2">
+                            <label>Sr.No<span class="text-danger">*</span></label>
+                        <input placeholder="SrNo" type="text"formControlName="srno"  class="form-control">
+                        <em class="error text-danger small" *ngIf="formdata.controls.srno.touched && formdata.controls.srno.invalid">Please enter srno</em>
+                        </div>
+                        <div class="col-md-4 mt-2">
+                            <label>Icon</label>
+                        <input placeholder="Icon" type="text"formControlName="icon"  class="form-control">
+                        </div>
+                        <div class="col-md-4 mt-2">
+                            <label>Link</label>
+                        <input placeholder="Link" type="text"formControlName="link"  class="form-control">
+                        </div>
+                    </div>
+                    </div>
+
+                    <input type="submit" [disabled]="formdata.invalid" value="Save" class="mt-1 btn btn-primary">
+                    <span (click)="reset()" class="mt-1 ml-2 btn btn-danger">Cancel</span>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 mt-2">
+        <div class="card">
+            <div class="card-body">
+                <ul class="mb-1 pl-3 pb-2">
+                    <li *ngFor="let data of parentMenus;">
+                      <span><i class="{{ data.icon }} ic-w mx-1"></i>{{ data.title }} 
+                        <a class="btn btn-xs btn-primary" (click)="edit(data.id)"><i class="fas fa-edit"  data-bs-toggle="tooltip" title="Edit"></i></a>
+                        <a class="btn btn-xs btn-danger ml-2" (click)="delete(data.id)"><i class="fas fa-trash"  data-bs-toggle="tooltip" title="Delete"></i></a></span>
+                      <ul class="nested">
+                        <li style="margin:10px" *ngFor="let menu of result | menufilter:data"><i class="{{ menu.icon }} ic-w mr-1"></i>{{ menu.title }} 
+                            <a class="btn btn-xs btn-primary" (click)="edit(menu.id)"  data-bs-toggle="tooltip" title="Edit"><i class="fas fa-edit"></i></a>
+                            <a class="btn btn-xs btn-danger ml-2" (click)="delete(menu.id)"  data-bs-toggle="tooltip" title="Delete"><i class="fas fa-trash"></i></a>
+                        </li>                        
+                      </ul>
+                    </li>
+                  </ul>
+            </div>
+            <div>
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="col-lg-12 mt-2">
+        <div class="card">
+            <div class="card-body">
+                <table class="table table-hover table-striped table-bordered">
+                    <thead class="text-left">
+                        <tr>
+                            <th style="width: 150px;">Action</th>
+                            <th style="width: 80px;">No</th>
+                            <th>Title</th>
+                            <th>Childs</th>
+                            <th>Menuid</th>
+                            <th>SrNo</th>
+                            <th>Icon</th>
+                            <th>Link</th>
+                         
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let data of result; let i=index" class="text-center">
+                            <td class="text-left">
+                                
+                                <button (click)="edit(data.id)" class="mb-2 mr-2 btn-icon btn-icon-only btn-pill btn btn-primary" data-bs-toggle="tooltip" title="Edit"><i class="pe-7s-tools btn-icon-wrapper"> </i></button>
+                                <button (click)="delete(data.id)" class="mb-2 mr-2 btn-icon btn-icon-only btn-pill btn btn-danger" data-bs-toggle="tooltip" title="Delete"><i class="pe-7s-trash btn-icon-wrapper"> </i></button>
+
+                            </td>
+                            <td>{{i+1}}</td>
+                            <td>{{data.title}}</td>
+                            <td>{{data.child}}</td>                         
+                            <td>{{data.menuid}}</td>
+                            <td>{{data.srno}}</td>
+                            <td>{{data.icon}}</td>
+                            <td>{{data.link}}</td>
+                           
+                          
+                        </tr>
+                    </tbody>
+
+                </table>
+
+
+            </div>
+        </div>
+    </div> -->
+</div>
+
+

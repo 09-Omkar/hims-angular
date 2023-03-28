@@ -1,0 +1,136 @@
+<div class="app-page-title">
+  <div class="page-title-wrapper">
+    <div class="page-title-heading">
+      <div>Ipdservices</div>
+    </div>
+    <div class="page-title-actions">
+      <label *ngIf="result" class="text-danger">Count: {{ result.length }}</label>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-body">
+
+        <form [formGroup]="formdata" (ngSubmit)="submit(formdata.value)" class="">
+          <div class="position-relative form-group">
+            <div class="row">
+
+
+              <div class="col-lg-4">
+
+                <label>Sr.No</label>
+                <input placeholder="Sr.No" type="number" formControlName="srno" class="form-control">
+
+
+              </div>
+
+              <div class="col-lg-4">
+                <label>Ipdservice<span class="text-danger">*</span></label>
+                <input placeholder="Ipdservice" type="text" formControlName="name" class="form-control">
+                <em class="error text-danger small" *ngIf="formdata.controls.name.touched && formdata.controls.name.invalid">Please enter ipdservices</em>
+
+              </div>
+
+
+
+              <div class="col-lg-4">
+
+                <label>Rate<span class="text-danger">*</span></label>
+                <input placeholder="Rate" type="number" formControlName="rate" class="form-control" >
+                <em class="error text-danger small" *ngIf="formdata.controls.rate.touched && formdata.controls.rate.invalid">Please enter rate</em>
+
+              </div>
+
+
+
+
+            </div><br><br>
+            <div class="row">
+              <div class="col-lg-4">
+                <label>Toselectdoctor</label><br>
+                <label class="switch">
+                  <input type="checkbox" formControlName="toselectdoctor">
+                  <span class="slider round"></span>
+                </label>
+
+              </div>
+              <div class="col-lg-4">
+                <label>Changesasperroom</label><br>
+                <label class="switch">
+                  <input type="checkbox" formControlName="changesasperroom">
+                  <span class="slider round"></span>
+                </label>
+
+              </div>
+              <div class="col-lg-4">
+                <label>Isitroom</label> <br>
+                <label class="switch">
+                  <input type="checkbox" formControlName="isitroom">
+                  <span class="slider round"></span>
+                </label>
+
+              </div>
+            </div>
+
+          </div>
+
+          <input type="submit" title="Save" [disabled]="formdata.invalid" value="Save" class="mt-1 mr-2 btn btn-primary">
+          <input type="submit" title="Cancle" value="Cancle" class="mt-1 mr-2 btn btn-danger" (click)="cancle()">
+
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-12 mt-2">
+    <div class="card">
+      <div class="card-body">
+        <table class="table table-hover table-striped table-bordered">
+          <thead class="text-center">
+            <tr>
+              <th style="width: 150px;">Action</th>
+              <th style="width: 100px;">No</th>
+              <th style="width: 200px;">Ipdservice Name</th>
+              <th style="width: 100px;">Sr.No</th>
+              <th style="width: 100px;">Rate</th>
+              <th style="width: 150px;">Toselectdoctor</th>
+              <th style="width: 150px;">Changesasperroom</th>
+              <th style="width: 150px;"> Isitroom</th>
+
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of result; let i=index">
+              <td class="text-center">
+
+                <button (click)="edit(data.id)" title="Edit" class="mb-2 mr-2 btn-icon btn-icon-only btn-pill btn btn-primary " ><i
+                    class="pe-7s-tools btn-icon-wrapper"> </i></button>
+                <button (click)="delete(data.id)" title="Delete" class="mb-2 mr-2 btn-icon btn-icon-only btn-pill btn btn-danger "><i
+                    class="pe-7s-trash btn-icon-wrapper"> </i></button>
+
+              </td>
+              <td class="text-right">{{i+1}}</td>
+              <td>{{data.name}}</td>
+              <td>{{data.srno}}</td>
+              <td>{{data.rate}}</td>
+              <td>{{data.toselectdoctor}}</td>
+              <td>{{data.changesasperroom}}</td>
+              <td>{{data.isitroom}}</td>
+
+
+            </tr>
+          </tbody>
+
+        </table>
+
+
+      </div>
+    </div>
+  </div>
+</div>
