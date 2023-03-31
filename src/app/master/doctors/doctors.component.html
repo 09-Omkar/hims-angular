@@ -1,0 +1,131 @@
+
+
+<div class="app-page-title">
+    <div class="page-title-wrapper">
+        <div class="page-title-heading">
+            <div>Categories</div>
+        </div>
+        <div class="page-title-actions">
+            <!-- <label class="text-danger">Count: {{ result.length }}</label> -->
+        </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+  
+                <form [formGroup]="formdata" (ngSubmit)="submit(formdata.value)" class="">
+                    <div class="position-relative form-group">
+                    <div class="row">
+                      <div class="col-lg-2">
+                          <label>TITLE ID<span class="text-danger">*</span></label>
+                          <input placeholder="TITLE ID" type="text"formControlName="titleid"  class="form-control">
+                      </div>
+                      <div class="col-lg-2">
+                          <label>REG. No<span class="text-danger">*</span></label>
+                          <input placeholder="REG. No" type="text"formControlName="regno"  class="form-control">
+  
+                      </div>
+                      <div class="col-lg-8">
+  
+                      </div>
+                      <div class="col-lg-4">
+                          <label>FIRST NAME<span class="text-danger">*</span></label>
+                          <input placeholder="FIRST NAME" type="text"formControlName="fname"  class="form-control">
+  
+                      </div>
+                      <div class="col-lg-4">
+                          <label>MIDDLE NAME<span class="text-danger">*</span></label>
+                          <input placeholder="MIDDLE NAME" type="text"formControlName="mname"  class="form-control">
+  
+                      </div>
+                      <div class="col-lg-4">
+                          <label>LAST NAME<span class="text-danger">*</span></label>
+                          <input placeholder="LAST NAME" type="text"formControlName="lname"  class="form-control">
+  
+                      </div>
+                      <div class="col-lg-4 mt-3">
+                          <label>MOBILE NO<span class="text-danger">*</span></label>
+                          <input placeholder="MOBILE NO" type="text"formControlName="mobileno"  class="form-control">
+  
+                      </div>
+                      <div class="col-lg-4 mt-3">
+                          <label>EMAIL<span class="text-danger">*</span></label>
+                          <input placeholder="EMAIL" type="text"formControlName="email"  class="form-control">
+  
+                      </div>
+                      <div class="col-lg-4 mt-3">
+                          <label>ADDRESS<span class="text-danger">*</span></label>
+                          <input placeholder="ADDRESS" type="text"formControlName="address"  class="form-control">
+  
+                      </div>
+  
+                      <div class="col-lg-4 mt-3">
+                          <label>PAN.NO<span class="text-danger">*</span></label>
+                          <input placeholder="PAN.NO" type="text"formControlName="panno"  class="form-control">
+                         
+                      </div>
+                      <div class="col-lg-4 mt-3">
+                          <label>BANK ACCOUNT NO<span class="text-danger">*</span></label>
+                          <input placeholder="BANK ACCOUNT NO" type="text"formControlName="bankaccountno"  class="form-control">
+  
+                      </div>
+                      <div class="col-lg-4 mt-3">
+                          <label>IFSC CODE<span class="text-danger">*</span></label>
+                          <input placeholder="IFSC CODE" type="text"formControlName="ifsccode"  class="form-control">
+  
+                      </div>
+  
+                      <div class="col-lg-4 mt-3">
+                          <label>DOCTOR TYPE<span class="text-danger">*</span></label>
+                          <input placeholder="DOCTOR TYPE" type="text"formControlName="doctortype"  class="form-control">
+  
+                      </div>
+                      <div class="col-lg-2 mt-3">
+                          <label>QUALIFICATION<span class="text-danger">*</span></label>
+                          <input placeholder="QUALIFICATION" type="text"formControlName="qualification"  class="form-control">
+  
+                      </div>
+                      <div class="col-lg-2 mt-3">
+                          <label>DEPARTMENT ID<span class="text-danger">*</span></label>
+                          <input placeholder="DEPARTMENT ID" type="text"formControlName="departmentid"  class="form-control">
+  
+                      </div>
+                      <div class="col-lg-2 mt-3">
+                          <label>SPECIALIZATION ID<span class="text-danger">*</span></label>
+                          <input placeholder="SPECIALIZATION ID" type="text"formControlName="specializationid"  class="form-control">
+  
+                      </div>
+                      <div class="col-lg-2 mt-3">
+                          <label>CASEPAPERS DAYS<span class="text-danger">*</span></label>
+                          <input placeholder="CASEPAPERS DAYS" type="number"formControlName="casepaperdays"  class="form-control">
+  
+                      </div>
+  
+                      <div class="col-lg-3 mt-3">
+                          <label>BIRTHDATE<span class="text-danger">*</span></label>
+                          <input  type="date" formControlName="birthdate"  class="form-control">
+  
+                      </div>
+                      <div class="col-lg-6">
+                      </div>
+                      <div class="col-lg-1 mt-5">
+                        <label class="switch">
+                          <input type="checkbox" checked formControlName="isactive">
+                          <span class="slider round"></span>
+                        </label>
+                      </div>
+                    </div>
+                    </div>
+  
+                    <input type="submit" [disabled]="formdata.invalid" value="Save" class="mt-1 btn btn-primary" routerLink="doctordata">
+                    <input type="button" [disabled]="formdata.invalid" value="Cancel" (click)="cancel()" class="mt-1 mx-3 btn btn-danger">
+                </form>
+  
+            </div>
+        </div>
+    </div>
+  </div>
+  

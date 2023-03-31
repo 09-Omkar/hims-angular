@@ -1,0 +1,68 @@
+<div class="app-page-title">
+    <div class="page-title-wrapper">
+      <div class="page-title-heading">
+        <div>OPD SERVICE DOCTOR RATECHART</div>
+      </div>
+      <div class="page-title-actions">
+        <div class="row">
+          <div class="col-lg-6">
+            <label>Doctor<span class="text-danger">*</span></label>
+            <select class="form-control" [(ngModel)]="doctorid" (change)="load()">
+              <option value="0">Doctor</option>
+              <option *ngFor="let doctor of doctors;" value="{{ doctor.id }}">{{ doctor.name }}</option>
+            </select>
+          </div>
+          <div class="col-lg-6">
+            <label>Category<span class="text-danger">*</span></label>
+            <select class="form-control" [(ngModel)]="categoryid" (change)="load()">
+              <option value="0">Category</option>
+              <option *ngFor="let category of categories;" value="{{ category.id }}">{{ category.name }}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-12 mt-2" *ngIf="result">
+    <div class="card">
+      <div class="card-body" *ngIf="result.length != 0">
+        <table class="table table-hover table-striped table-bordered">
+          <thead class="text-center">
+            <tr>
+              <!-- <th style="width: 150px;">Action</th> -->
+              <th class="text-right">No</th>
+              <th class="text-left" style="width: 200px;">SERVICE NAME</th>
+              <th>DEFAULT RATE</th>
+              <th>RATE <button class="btn btn-sm btn-warning" title="Copy Default Rates" (click)="copy('defaultrate', 'rate')">Copy</button></th>
+              <th>DEFAULT-FOLLOW RATE</th>
+              <th>FOLLOW-UP RATE  <button class="btn btn-sm btn-warning" title="Copy Default Follow-Up Rates" (click)="copy('defaultfrate', 'frate')">Copy</button></th>
+  
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of result;let i =index;">
+              <td class="text-right">{{ (i + 1) }}</td>
+              <td class="text-left">{{data.name}}</td>
+              <td class="text-center">{{data.defaultrate | currency:"INR" }}</td>
+              <td class="text-center">
+                <input type="number" (change)="changeValue($event, 'rate', i)" class="form-control text-right" value="{{data.rate}}">
+              </td>
+              <td class="text-center">{{data.defaultfrate | currency:"INR"}}</td>
+              <td class="text-center">
+                <input type="number" (change)="changeValue($event, 'frate', i)" class="form-control text-right" value="{{data.frate}}">
+              </td>
+  
+            </tr>
+          </tbody>
+  
+        </table>
+        <div>
+          <div>
+            <button class="mt-1 btn btn-primary" (click)="submit()">Save</button>
+            <button (click)="cancel()" class="mt-1 mx-3 btn btn-danger">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

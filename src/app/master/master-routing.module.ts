@@ -26,6 +26,9 @@ import { TalukasComponent } from './talukas/talukas.component';
 import { TitlesComponent } from './titles/titles.component';
 import { UsertypesComponent } from '../igap/usertypes/usertypes.component';
 import { VillagesComponent } from './villages/villages.component';
+import { DoctorsComponent } from './doctors/doctors.component';
+import { DoctordataComponent } from './doctordata/doctordata.component';
+import { DoctorcatrgorywiseopdserviceratesComponent } from './doctorcatrgorywiseopdservicerates/doctorcatrgorywiseopdservicerates.component';
 
 const routes: Routes = [
   {path:'', component:LandingComponent, children:[
@@ -54,6 +57,10 @@ const routes: Routes = [
     {path:'rooms', component:RoomsComponent},
     {path:'specializations', component:SpecializationsComponent},
     {path:'usertypes', component:UsertypesComponent},    
+    {path:'doctors', component:DoctorsComponent},
+    {path:'doctordata', component:DoctordataComponent},
+    {path:"opdservicesdoctor", component:DoctorcatrgorywiseopdserviceratesComponent}
+
   ]}
 ];
 

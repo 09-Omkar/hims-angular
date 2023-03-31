@@ -30,6 +30,9 @@ import { ReligionsComponent } from './religions/religions.component';
 import { RoomsComponent } from './rooms/rooms.component';
 import { SpecializationsComponent } from './specializations/specializations.component';
 import { VillagesComponent } from './villages/villages.component';
+import { DoctorcatrgorywiseopdserviceratesComponent } from './doctorcatrgorywiseopdservicerates/doctorcatrgorywiseopdservicerates.component';
+import { DoctordataComponent } from './doctordata/doctordata.component';
+import { DoctorsComponent } from './doctors/doctors.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +60,10 @@ import { VillagesComponent } from './villages/villages.component';
     ReligionsComponent,
     RoomsComponent,
     SpecializationsComponent,
-    VillagesComponent
+    VillagesComponent,
+    DoctorcatrgorywiseopdserviceratesComponent,
+    DoctordataComponent,
+    DoctorsComponent
   ],
   imports: [
     CommonModule,
