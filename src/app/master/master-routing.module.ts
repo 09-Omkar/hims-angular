@@ -29,6 +29,7 @@ import { VillagesComponent } from './villages/villages.component';
 import { DoctorsComponent } from './doctors/doctors.component';
 import { DoctordataComponent } from './doctordata/doctordata.component';
 import { DoctorcatrgorywiseopdserviceratesComponent } from './doctorcatrgorywiseopdservicerates/doctorcatrgorywiseopdservicerates.component';
+import { PatientregistrationComponent } from './patientregistration/patientregistration.component';
 
 const routes: Routes = [
   {path:'', component:LandingComponent, children:[
@@ -59,6 +60,8 @@ const routes: Routes = [
     {path:'usertypes', component:UsertypesComponent},    
     {path:'doctors', component:DoctorsComponent},
     {path:'doctordata', component:DoctordataComponent},
+    {path:'patient', component:PatientregistrationComponent},
+
     {path:"opdservicesdoctor", component:DoctorcatrgorywiseopdserviceratesComponent}
 
   ]}

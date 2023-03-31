@@ -74,11 +74,8 @@ export class DoctorsComponent implements OnInit{
         showConfirmButton: false,
         position: 'bottom-left',
         timer: 1000
-
       })
     this.router.navigate(["doctordata"])
-
-
     })
 
     }

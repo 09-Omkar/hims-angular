@@ -33,6 +33,7 @@ import { VillagesComponent } from './villages/villages.component';
 import { DoctorcatrgorywiseopdserviceratesComponent } from './doctorcatrgorywiseopdservicerates/doctorcatrgorywiseopdservicerates.component';
 import { DoctordataComponent } from './doctordata/doctordata.component';
 import { DoctorsComponent } from './doctors/doctors.component';
+import { PatientregistrationComponent } from './patientregistration/patientregistration.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { DoctorsComponent } from './doctors/doctors.component';
     VillagesComponent,
     DoctorcatrgorywiseopdserviceratesComponent,
     DoctordataComponent,
-    DoctorsComponent
+    DoctorsComponent,
+    PatientregistrationComponent
   ],
   imports: [
     CommonModule,
